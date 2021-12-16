@@ -1,7 +1,14 @@
+:root {
+    --whiteText: #ffffff;
+    --grayText: #8a8a8a;
+    --blueText: #7d83d1;
+}
+
 * {
     margin: 0;
     padding: 0;
-    color: white;
+    color: var(--whiteText);
+    font-size: 16px;
 }
 
 body {
@@ -14,4 +21,30 @@ main {
     height: 100vh;
     background-color: #121212;
     text-align: center;
+}
+
+nav {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    border-bottom: 1px solid var(--grayText);
+}
+
+li {
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 24px;
+    padding: 10px;
+}
+
+p {
+    color: var(--blueText);
 }
