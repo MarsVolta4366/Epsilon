@@ -8,6 +8,7 @@ function show(data) {
                 <h1>Album: {data.album.name}</h1>
                 <h2>Artist: {data.album.artist}</h2>
                 <h2>Released: {data.album.releaseYear}</h2>
+                <a href={`/albums/${data.album.id}/edit`}>Edit</a>
                 <form method="POST" action={`/albums/${data.album.id}?_method=DELETE`}>
                     <input type="submit" value="Delete" />
                 </form>

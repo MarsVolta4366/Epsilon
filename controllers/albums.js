@@ -38,6 +38,28 @@ router.delete("/:id", (req, res) => {
         })
 })
 
+// EDIT ALBUM PAGE
+router.get("/:id/edit", (req, res) => {
+    db.Album.findById(req.params.id)
+        .then(album => {
+            res.render("albums/edit", {album})
+        })
+        .catch(error => {
+            res.render("error404")
+        })
+})  
+
+// UPDATE ALBUM 
+router.put("/:id", (req, res) => {
+    db.Album.findByIdAndUpdate(req.params.id, req.body)
+        .then(() => {
+            res.redirect(`/albums/${req.params.id}`)
+        })
+        .catch(error => {
+            res.render("error404")
+        })
+})
+
 // CREATE
 router.post("/", (req, res) => {
     db.Album.create(req.body)
