@@ -1,5 +1,6 @@
 const router = require("express").Router()
 const db = require("../models")
+const albumSeedData = require("../models/seed/albumSeed")
 
 router.get("/", (req, res) => {
     db.Album.find()
@@ -12,6 +13,17 @@ router.get("/", (req, res) => {
         })
 })
 
+// SEED ALBUMS
+router.get("/seed", async (req, res) => {
+    try {
+        await db.Album.insertMany(albumSeedData)
+        res.redirect("/albums")
+    } catch(error) {
+        res.send("Error: " + error)
+    }
+})
+
+// NEW ALBUM PAGE
 router.get("/new", (req, res) => {
     res.render("albums/new")
 })
