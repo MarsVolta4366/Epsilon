@@ -39,7 +39,7 @@ router.get("/:id", (req, res) => {
         })
 })
 
-// DELETE ALBUM
+// ALBUM DELETE
 router.delete("/:id", (req, res) => {
     db.Album.findByIdAndDelete(req.params.id)
         .then(deletedAlbum => {
@@ -61,7 +61,7 @@ router.get("/:id/edit", (req, res) => {
         })
 })  
 
-// UPDATE ALBUM 
+// ALBUM PUT 
 router.put("/:id", (req, res) => {
     db.Album.findByIdAndUpdate(req.params.id, req.body)
         .then(() => {
@@ -72,7 +72,7 @@ router.put("/:id", (req, res) => {
         })
 })
 
-// CREATE ALBUM
+// ALBUM POST
 router.post("/", (req, res) => {
     db.Album.create(req.body)
         .then(() => {
@@ -84,9 +84,19 @@ router.post("/", (req, res) => {
         })
 })
 
-router.post("/:id/review", (req, res) => {
+// REVIEW POST
+router.post("/:id/review", async (req, res) => {
     req.body.worthListeningTo = req.body.worthListeningTo ? true : false
-    res.redirect(`/albums/${req.params.id}`)
+    try {
+        const album = await db.Album.findById(req.params.id)
+        const review = await db.Review.create(req.body)
+        album.reviews.push(review.id)
+        await album.save()
+        res.redirect(`/albums/${req.params.id}`)
+    } catch(error) {
+        res.render("error404")
+    }
+
 })
 
 module.exports = router
