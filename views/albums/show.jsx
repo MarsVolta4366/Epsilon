@@ -12,6 +12,28 @@ function show(data) {
                 <form method="POST" action={`/albums/${data.album.id}?_method=DELETE`}>
                     <input type="submit" value="Delete" />
                 </form>
+
+                {/* REVIEW FORM */}
+                <form method="POST" action={`/albums/${data.album.id}/review`}>
+                    <h2>Write a Review</h2>
+                    <div>
+                        <label htmlFor="author">Author: </label>
+                        <input type="text" name="author" id="author" />
+                    </div>
+                    <div>
+                        <label htmlFor="worthListeningTo">Worth a Listen?</label>
+                        <input type="checkbox" name="worthListeningTo" id="worthListeningTo" />
+                    </div>
+                    <div>
+                        <label htmlFor="stars">Star Rating: </label>
+                        <input type="number" step={.5} max={5} name="stars" id="stars" />
+                    </div>
+                    <div>
+                        <label htmlFor="content">Review: </label>
+                        <textarea name="content" id="content" cols="30" rows="10"/>
+                    </div>
+                    <input type="submit" value="Submit Review" />
+                </form>
             </main>
         </Def>
     )

@@ -72,7 +72,7 @@ router.put("/:id", (req, res) => {
         })
 })
 
-// CREATE
+// CREATE ALBUM
 router.post("/", (req, res) => {
     db.Album.create(req.body)
         .then(() => {
@@ -82,6 +82,11 @@ router.post("/", (req, res) => {
             console.log("ERR: " + err)
             res.render("error404")
         })
+})
+
+router.post("/:id/review", (req, res) => {
+    req.body.worthListeningTo = req.body.worthListeningTo ? true : false
+    res.redirect(`/albums/${req.params.id}`)
 })
 
 module.exports = router

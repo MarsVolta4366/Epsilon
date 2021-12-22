@@ -7,3 +7,4 @@ mongoose.connect(process.env.MONGO_URI, {
 })
 
 module.exports.Album = require("./albums")
+module.exports.Review = require("./review")

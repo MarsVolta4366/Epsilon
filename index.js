@@ -1,4 +1,3 @@
-// Work on being able to add album reviews next?
 const express = require("express")
 require("dotenv").config()
 const methodOverride = require("method-override")
