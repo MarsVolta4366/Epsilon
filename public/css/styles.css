@@ -56,3 +56,7 @@ input {
 textarea {
     color: black;
 }
+
+span {
+    font-weight: bold;
+}

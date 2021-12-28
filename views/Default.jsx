@@ -10,6 +10,8 @@ function def(html) {
             <title>Epsilon</title>
             {/* CSS */}
             <link rel="stylesheet" href="/css/styles.css" />
+            {/* Font Awesome */}
+            <script src="https://kit.fontawesome.com/686defbe25.js" crossOrigin="anonymous"></script>
         </head>
         <body>
             <nav>

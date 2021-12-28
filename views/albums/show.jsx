@@ -1,8 +1,23 @@
-// DISPLAY REVIEWS BELOW REVIEW FORM
 const React = require("react")
 const Def = require("../default")
 
 function show(data) {
+
+    let reviews = (
+        <h2>No Reviews Yet!</h2>
+    )
+    if (data.album.reviews.length > 0) {
+        reviews = data.album.reviews.map(review => {
+            return (
+                <div key={review.id}>
+                    <h2>Rating: {review.stars} stars</h2>                    
+                    <h2>Author: {review.author}</h2>
+                    <p>{review.worthListeningTo ? "Worth Listening to!" : "Not Worth Listening to!"}</p>
+                    <p>{review.content}</p>
+                </div>
+            )
+        })
+    }
     return (
         <Def>
             <main>
@@ -35,6 +50,11 @@ function show(data) {
                     </div>
                     <input type="submit" value="Submit Review" />
                 </form>
+
+                <div>
+                    <h1>Reviews</h1>
+                    {reviews}
+                </div>
             </main>
         </Def>
     )

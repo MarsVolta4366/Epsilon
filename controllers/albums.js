@@ -31,6 +31,7 @@ router.get("/new", (req, res) => {
 // SHOW PAGE
 router.get("/:id", (req, res) => {
     db.Album.findById(req.params.id)
+        .populate("reviews")
         .then(album => {
             res.render("albums/show", {album})
         })
