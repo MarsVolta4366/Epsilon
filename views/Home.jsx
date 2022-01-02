@@ -6,7 +6,7 @@ function home() {
         <Def>
             <main>
                 <h1>HOME</h1>
-                <p>Welcome to Epsilon! This is an application for adding albums and album reviews.</p>
+                <p>Welcome! This is an application for adding albums and album reviews.</p>
             </main>
         </Def>
     )
