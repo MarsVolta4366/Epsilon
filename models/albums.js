@@ -1,4 +1,3 @@
-// HOOK CURRENTLY DELETES ALL REVIEWS IN DATABASE, SHOULD ONLY DELETE REVIEWS OF ALBUM
 const mongoose = require("mongoose")
 const Review = require("./review")
 
@@ -17,3 +16,4 @@ albumSchema.post("findOneAndDelete", function() {
 })
 
 module.exports = mongoose.model("Album", albumSchema)
+//
