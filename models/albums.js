@@ -16,4 +16,3 @@ albumSchema.post("findOneAndDelete", function() {
 })
 
 module.exports = mongoose.model("Album", albumSchema)
-//
