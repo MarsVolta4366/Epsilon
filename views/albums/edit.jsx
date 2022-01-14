@@ -17,7 +17,7 @@ function edit_form(data) {
                     </div>
                     <div>
                         <label htmlFor="releaseYear">Release Year: </label>
-                        <input type="text" name="releaseYear" id="releaseYear" defaultValue={data.album.releaseYear} />
+                        <input type="number" name="releaseYear" id="releaseYear" defaultValue={data.album.releaseYear} />
                     </div>
                     <input type="submit" />
                 </form>

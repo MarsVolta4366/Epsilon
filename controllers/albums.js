@@ -31,7 +31,9 @@ router.get("/new", (req, res) => {
 // SHOW PAGE
 router.get("/:id", (req, res) => {
     db.Album.findById(req.params.id)
-        .populate("reviews")
+        .populate({
+            path: "reviews"
+        })
         .then(album => {
             res.render("albums/show", {album})
         })
@@ -86,18 +88,24 @@ router.post("/", (req, res) => {
 })
 
 // REVIEW POST
-router.post("/:id/review", async (req, res) => {
-    req.body.worthListeningTo = req.body.worthListeningTo ? true : false
-    try {
-        const album = await db.Album.findById(req.params.id)
-        const review = await db.Review.create(req.body)
-        album.reviews.push(review.id)
-        await album.save()
-        res.redirect(`/albums/${req.params.id}`)
-    } catch(error) {
-        res.render("error404")
-    }
+// router.post("/:id/review", async (req, res) => {
+//     req.body.worthListeningTo = req.body.worthListeningTo ? true : false
+//     try {
+//         const album = await db.Album.findById(req.params.id)
+//         const review = await db.Review.create(req.body)
+//         album.reviews.push(review.id)
+//         await album.save()
+//         res.redirect(`/albums/${req.params.id}`)
+//     } catch(error) {
+//         res.render("error404")
+//     }
 
+// })
+
+router.post("/:id/review", (req, res) => {
+    req.body.worthListeningTo = req.body.worthListeningTo ? true : false
+    db.Review.create(req.body)
+    res.redirect(`/albums/${req.params.id}`)
 })
 
 module.exports = router

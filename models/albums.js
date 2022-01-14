@@ -4,8 +4,13 @@ const Review = require("./review")
 const albumSchema = new mongoose.Schema({
     name: {type: String, required: true},
     artist: {type: String, required: true},
-    releaseYear: Number,
-    reviews: [{type: mongoose.Schema.Types.ObjectId, ref: "Review"}]
+    releaseYear: Number
+}, {toJSON: {virtuals: true}})
+
+albumSchema.virtual("reviews", {
+    ref: "Review",
+    localField: "_id",
+    foreignField: "album"
 })
 
 albumSchema.post("findOneAndDelete", function() {

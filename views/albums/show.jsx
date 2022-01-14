@@ -6,6 +6,7 @@ function show(data) {
     let reviews = (
         <h2>No Reviews Yet!</h2>
     )
+    console.log(data.album.reviews)
     if (data.album.reviews.length > 0) {
         reviews = data.album.reviews.map(review => {
             return (
@@ -47,6 +48,9 @@ function show(data) {
                     <div>
                         <label htmlFor="content">Review: </label>
                         <textarea name="content" id="content" cols="30" rows="10"/>
+                    </div>
+                    <div style={{"display": "none"}}>
+                        <input type="text" name="album" id="album" value={data.album.id}/>
                     </div>
                     <input type="submit" value="Submit Review" />
                 </form>
