@@ -6,7 +6,6 @@ function show(data) {
     let reviews = (
         <h2>No Reviews Yet!</h2>
     )
-    console.log(data.album.reviews)
     if (data.album.reviews.length > 0) {
         reviews = data.album.reviews.map(review => {
             return (
@@ -25,14 +24,16 @@ function show(data) {
                 <h1>Album: {data.album.name}</h1>
                 <h2>Artist: {data.album.artist}</h2>
                 <h2>Released: {data.album.releaseYear}</h2>
-                <a href={`/albums/${data.album.id}/edit`}>Edit</a>
+                <a href={`/albums/${data.album.id}/edit`} id="editButton">Edit</a>
                 <form method="POST" action={`/albums/${data.album.id}?_method=DELETE`}>
                     <input type="submit" value="Delete" />
                 </form>
 
+                <hr/>
+
                 {/* REVIEW FORM */}
-                <form method="POST" action={`/albums/${data.album.id}/review`}>
-                    <h2>Write a Review</h2>
+                <form id="reviewForm" method="POST" action={`/albums/${data.album.id}/review`}>
+                    <h1>Write a Review</h1>
                     <div>
                         <label htmlFor="author">Author: </label>
                         <input type="text" name="author" id="author" />
@@ -50,7 +51,7 @@ function show(data) {
                         <textarea name="content" id="content" cols="30" rows="10"/>
                     </div>
                     <div style={{"display": "none"}}>
-                        <input type="text" name="album" id="album" value={data.album.id}/>
+                        <input type="text" name="album" id="album" defaultValue={data.album.id}/>
                     </div>
                     <input type="submit" value="Submit Review" />
                 </form>

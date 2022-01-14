@@ -23,6 +23,24 @@ main {
     text-align: center;
 }
 
+main>form>div {
+    margin: 10px;
+}
+
+#editButton {
+    text-decoration: underline;
+}
+
+form {
+    margin: 10px;
+}
+
+label {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+}
+
 nav {
     width: 80%;
     margin: auto;
