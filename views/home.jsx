@@ -1,14 +1,14 @@
 const React = require("react")
-const def = require("./default")
+const Def = require("./default")
 
 function home() {
     return (
-        <def>
+        <Def>
             <main>
                 <h1>HOME</h1>
                 <p>Welcome! This is an application for adding albums and album reviews.</p>
             </main>
-        </def>
+        </Def>
     )
 }
 
